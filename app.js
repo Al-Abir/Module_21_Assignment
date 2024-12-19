@@ -24,6 +24,7 @@ app.use(hpp());
 
 // Body Parser Implement
 app.use(bodyParser.json());
+//app.use(express.json());
 
 // Request Rate Limit
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 3000 });
@@ -51,5 +52,11 @@ app.use("/api/v1", router);
 app.use("*", (req, res) => {
   res.status(404).json({ status: "fail", data: "Not Found" });
 });
+
+
+app.listen(5000, () => {
+  console.log("App Run 5000");
+});
+
 
 module.exports = app;
