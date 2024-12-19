@@ -23,8 +23,8 @@ app.use(xss());
 app.use(hpp());
 
 // Body Parser Implement
-app.use(bodyParser.json());
-//app.use(express.json());
+// app.use(bodyParser.json());
+app.use(express.json());
 
 // Request Rate Limit
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 3000 });

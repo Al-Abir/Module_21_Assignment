@@ -56,22 +56,23 @@ exports.UpdateProfile = async (req, res) => {
 };
 
 
-exports.DeleteSingleApi = async (req, res) => {
-    const { FirstName, NID } = req.user;
+
+exports.DeleteProfile = async (req, res) => {
+    const { NID } = req.user;
 
     if (!NID) {
-        return res.status(400).json({ message: "NID is required" });
+        return res.status(400).json({ message: 'NID is required to delete a profile' });
     }
 
     try {
-        const deletedProfile = await ProfileModel.deleteOne({ NID:NID });
+        const deleteResult = await ProfileModel.deleteOne({ NID });
 
-        if (deletedProfile.deletedCount === 0) {
-            return res.status(404).json({ message: "Profile not found" });
+        if (deleteResult.deletedCount === 0) {
+            return res.status(404).json({ message: "Profile not found with the given NID" });
         }
 
         res.status(200).json({ status: "success", message: "Profile deleted successfully" });
     } catch (error) {
-        res.status(500).json({ status: "fail", message: "Something went wrong", error: error.message });
+        res.status(500).json({ status: "fail", message: "Failed to delete profile", error: error.message });
     }
 };
