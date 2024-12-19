@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const DataSchema = mongoose.Schema({
-    FirstName: {type:String},
+    FirstName: {type:String,require:true},
     LastName:{type:String},
     NID: {
         type:String,

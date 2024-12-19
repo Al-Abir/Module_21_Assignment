@@ -1,17 +1,23 @@
 const jwt = require('jsonwebtoken');
 
+module.exports = (req, res, next) => {
+    const token = req.headers['token']; // Token header
 
-module.exports =(req,res,next)=>{
+    if (!token) {
+        return res.status(401).json({ status: "Unauthorized", message: "No token provided" });
+    }
 
-     let token = req.headers['token'];
-    jwt.verify(token,"abir123",(err,decoded)=>{
-      if(err){
-        res.status(401).json({status:"unautorized"})
-      }else{
-        let FirstName = decoded['data']['FirstName'];
-        req.headers.FirstName = FirstName;
-        next()
-      }
-    })
+    jwt.verify(token, "abir123", (err, decoded) => {
+        if (err) {
+            return res.status(401).json({ status: "Unauthorized", message: "Invalid token" });
+        }
 
-}
+        // Store user information from the decoded token
+        req.user = {
+            FirstName: decoded.data.FirstName,
+            NID: decoded.data.NID,
+        };
+
+        next();
+    });
+};
