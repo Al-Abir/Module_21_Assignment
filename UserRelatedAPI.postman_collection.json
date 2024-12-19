@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "fe99bfe8-7d95-424f-9f9c-8fbe6a0946c3",
+		"name": "UserRelatedAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39104973"
+	},
+	"item": [
+		{
+			"name": "CreateProfile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"FirstName\": \"Tosher\",\n    \"LastName\":\"Sheikh\",\n     \"NID\": \"1234567\",\n     \"PhoneNumber\": \"0140\",\n     \"Password\":\"Tosher\",\n     \"BooldGroup\": \"A+\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/CreateProfile",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"CreateProfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserLogin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"FirstName\":\"Abir\",\n \"Password\":\"admin\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/UserLogin",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"UserLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SelectProfile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseURL}}/SelectProfile",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"SelectProfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProfile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{Token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n            \"FirstName\": \"D\",\n            \"LastName\": \"Sheikh\",\n            \"NID\": \"1237\",\n            \"PhoneNumber\": \"0140\",\n            \"Password\": \"123\",\n            \"BooldGroup\": \"AD+\"\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/UpdateProfile",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"UpdateProfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProfile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"NID\":\"1237\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/DeleteSingleApi",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"DeleteSingleApi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAlluser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/getAlluser",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"getAlluser"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "http://localhost:5000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzQ2ODcyNTcsImRhdGEiOnsiRmlyc3ROYW1lIjoiQWRtaW4iLCJOSUQiOiIxMjM3MzQzNDQyIn0sImlhdCI6MTczNDYwMDg1N30.NvZW5RjLDLBPsjWCt8cOqjYDyHho2SicVI3Dw67vXTs",
+			"type": "string"
+		}
+	]
+}
